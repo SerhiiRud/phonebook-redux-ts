@@ -13,9 +13,10 @@ import { Home } from "../pages/Home/Home";
 import { Register } from "../pages/Register/Register";
 import { Login } from "../pages/Login/Login";
 import { Contacts } from "../pages/Contacts/Contacts";
+import { AppDispatch } from "../redux/store";
 
 export const App = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { isRefreshing } = useAuth();
 
   useEffect(() => {
