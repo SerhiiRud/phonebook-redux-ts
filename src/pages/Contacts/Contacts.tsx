@@ -12,7 +12,7 @@ export const Contacts = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch<any>(fetchContacts());
   }, [dispatch]);
 
   return (

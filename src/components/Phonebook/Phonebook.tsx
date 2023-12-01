@@ -20,7 +20,12 @@ export const ContactForm = () => {
   const color = useColorModeValue("gray.400", "gray.800");
   const contacts = useSelector(getContacts);
 
-  const addContactHandler = (values, actions) => {
+  type TFormValues = {
+    name: string;
+    number: string;
+  };
+
+  const addContactHandler = (values: TFormValues, actions: any) => {
     if (
       contacts.find(
         (contact) =>
@@ -31,7 +36,7 @@ export const ContactForm = () => {
       return alert(`${values.name} is already in contacts`);
     }
 
-    dispatch(addContact({ ...values, id: nanoid() }));
+    dispatch<any>(addContact({ ...values, id: nanoid() }));
 
     actions.resetForm();
   };
