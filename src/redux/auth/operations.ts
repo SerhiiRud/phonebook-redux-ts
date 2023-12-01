@@ -18,9 +18,15 @@ const clearAuthHeader = () => {
  * POST @ /users/signup
  * body: { name, email, password }
  */
+type TRegisterCredentials = {
+  name: string;
+  email: string;
+  password: string;
+};
+
 export const register = createAsyncThunk(
   "auth/register",
-  async (credentials, thunkAPI) => {
+  async (credentials: TRegisterCredentials, thunkAPI) => {
     try {
       const res = await axios.post("/users/signup", credentials);
       // After successful registration, add the token to the HTTP header
@@ -37,9 +43,13 @@ export const register = createAsyncThunk(
  * POST @ /users/login
  * body: { email, password }
  */
+type TLoginCredentials = {
+  email: string;
+  password: string;
+};
 export const logIn = createAsyncThunk(
   "auth/login",
-  async (credentials, thunkAPI) => {
+  async (credentials: TLoginCredentials, thunkAPI) => {
     try {
       const res = await axios.post("/users/login", credentials);
       // After successful login, add the token to the HTTP header

@@ -19,7 +19,7 @@ export const Filter = () => {
   const bg = useColorModeValue("#423d33", "transparent");
   const color = useColorModeValue("gray.400", "gray.800");
 
-  const onSearch = (event) => {
+  const onSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
     const form = event.target;
     dispatch(setFilter(form.value));

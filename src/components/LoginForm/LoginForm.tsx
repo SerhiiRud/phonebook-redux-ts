@@ -17,13 +17,17 @@ export const LoginForm = () => {
   const bg = useColorModeValue("#423d33", "transparent");
   const color = useColorModeValue("gray.400", "gray.800");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    dispatch(
+    const email = e.currentTarget[0] as HTMLInputElement;
+    const password = e.currentTarget[1] as HTMLInputElement;
+    dispatch<any>(
       logIn({
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        // email: form.elements[0].value,
+        // password: form.elements[1].value,
+        email: email.value,
+        password: password.value,
       })
     );
     form.reset();
@@ -88,17 +92,19 @@ export const LoginForm = () => {
           Don't have an account?{" "}
         </Text>
         <Link
-          as={ReachLink}
-          textDecoration="underline"
-          color="#FF9900"
+          // as={ReachLink}
+          // textDecoration="underline"
+          // color="#FF9900"
           to="/register"
         >
           <Text
             as="span"
+            textDecoration="underline" //?
+            color="#FF9900" //?
             fontSize="12"
             _hover={{ color: "#FF9900" }}
             fontWeight="bold"
-            textDecoration="underline"
+            //textDecoration="underline"
           >
             Register now!
           </Text>

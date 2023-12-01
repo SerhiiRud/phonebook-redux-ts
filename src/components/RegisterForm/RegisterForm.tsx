@@ -8,14 +8,17 @@ export const RegisterForm = () => {
   const bg = useColorModeValue("#423d33", "transparent");
   const color = useColorModeValue("gray.400", "gray.800");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    dispatch(
+    const name = e.currentTarget[0] as HTMLInputElement;
+    const email = e.currentTarget[1] as HTMLInputElement;
+    const password = e.currentTarget[2] as HTMLInputElement;
+    dispatch<any>(
       register({
-        name: form.elements.name.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
+        name: name.value,
+        email: email.value,
+        password: password.value,
       })
     );
     form.reset();

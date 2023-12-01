@@ -10,7 +10,7 @@ export const UserMenu = () => {
   return (
     <Flex gap="8px" align="center">
       <p>Welcome, {user.name}</p>
-      <Button h="24px" type="button" onClick={() => dispatch(logOut())}>
+      <Button h="24px" type="button" onClick={() => dispatch<any>(logOut())}>
         Logout
       </Button>
     </Flex>

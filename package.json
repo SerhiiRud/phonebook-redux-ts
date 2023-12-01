@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://SerhiiRud.github.io/phonebook-redux-ts/",
   "dependencies": {
+    "@chakra-ui/cra-template-typescript": "^2.0.6",
     "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/react": "^2.7.0",
     "@chakra-ui/theme": "^3.1.2",
@@ -63,6 +64,7 @@
     ]
   },
   "devDependencies": {
+    "@types/styled-components": "^5.1.32",
     "gh-pages": "^6.1.0"
   }
 }

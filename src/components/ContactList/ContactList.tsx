@@ -17,6 +17,7 @@ import {
 } from "../../redux/contacts/selectors";
 import { Loader } from "../Loader/Loader";
 import { fetchContacts, removeContact } from "../../redux/contacts/operations";
+import { TContact } from "../../interfaces/Contacts.interface";
 
 export const ContactList = () => {
   const dispatch = useDispatch();
@@ -26,15 +27,15 @@ export const ContactList = () => {
   const filter = useSelector(getFilter);
   const color = useColorModeValue("gray.400", "gray.800");
 
-  const onDelete = (id) => {
-    dispatch(removeContact(id));
+  const onDelete = (id: string) => {
+    dispatch<any>(removeContact(id));
   };
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch<any>(fetchContacts());
   }, [dispatch]);
 
-  const getVisibleContacts = (contacts, filter) => {
+  const getVisibleContacts = (contacts: TContact[], filter: string) => {
     return [...contacts].filter((contact) =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
@@ -44,7 +45,7 @@ export const ContactList = () => {
   return (
     <>
       {isLoading && <Loader />}
-      {error && <div>{error}</div>}
+      {error && <div>{error.message}</div>}
       {getVisibleContacts.length > 0 && (
         <List>
           {visibleContacts.map((contact) => (
